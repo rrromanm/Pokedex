@@ -9,7 +9,7 @@ const HomePage = () => {
   useEffect(() => {
     const fetchPokemons = async () => {
       try {
-        const response = await fetch("https://pokeapi.co/api/v2/pokemon?limit=1008");
+        const response = await fetch("https://pokeapi.co/api/v2/pokemon?limit=1026");
         const data = await response.json();
         setPokemons(data.results);
       } catch (error) {
@@ -29,24 +29,20 @@ const HomePage = () => {
       <h1 className="text-3xl font-bold my-4">Pokédex</h1>
       <PokemonTable pokemons={currentPokemons} />
 
-      <div className="flex gap-4 my-4">
-        <button
-          onClick={() => setCurrentPage((prev) => Math.max(prev - 1, 1))}
-          disabled={currentPage === 1}
-          className="px-4 py-2 bg-red-500 text-white rounded disabled:bg-gray-400"
-        >
-          Back
-        </button>
+      <div className="mt-3 d-flex justify-content-between">
+        <button 
+        className="rounded" 
+        onClick={() => setCurrentPage((prev) => Math.max(prev - 1, 1))}
+        disabled={currentPage === 1}>Back</button>
 
-        <span>Page {currentPage}</span>
+        <>
+          <span>Page {currentPage}</span>
+        </>
 
-        <button
-          onClick={() => setCurrentPage((prev) => (indexOfLastItem < pokemons.length ? prev + 1 : prev))}
-          disabled={indexOfLastItem >= pokemons.length}
-          className="px-4 py-2 bg-green-500 text-white rounded disabled:bg-gray-400"
-        >
-          Next
-        </button>
+        <button 
+        className="rounded"
+        onClick={() => setCurrentPage((prev) => (indexOfLastItem < pokemons.length ? prev + 1 : prev))}
+        disabled={indexOfLastItem >= pokemons.length}>Next</button>
       </div>
     </div>
   );

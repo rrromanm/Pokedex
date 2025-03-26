@@ -1,28 +1,30 @@
-import React, { useEffect, useState } from "react";
+import React, { use, useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
 
-const typeColors = {
-    fire: '#EE8130',
-    water: '#6390F0',
-    electric: '#F7D02C',
-    grass: '#7AC74C',
-    ice: '#96D9D6',
-    fighting: '#C22E28',
-    poison: '#A33EA1',
-    ground: '#E2BF65',
-    flying: '#A98FF3',
-    psychic: '#F95587',
-    bug: '#A6B91A',
-    rock: '#B6A136',
-    ghost: '#735797',
-    dragon: '#6F35FC',
-    dark: '#705746',
-    steel: '#B7B7CE',
-    fairy: '#D685AD',
-    default: '#A8A77A',
-};
+    const typeColors = {
+        fire: '#EE8130',
+        water: '#6390F0',
+        electric: '#F7D02C',
+        grass: '#7AC74C',
+        ice: '#96D9D6',
+        fighting: '#C22E28',
+        poison: '#A33EA1',
+        ground: '#E2BF65',
+        flying: '#A98FF3',
+        psychic: '#F95587',
+        bug: '#A6B91A',
+        rock: '#B6A136',
+        ghost: '#735797',
+        dragon: '#6F35FC',
+        dark: '#705746',
+        steel: '#B7B7CE',
+        fairy: '#D685AD',
+        default: '#A8A77A',
+    };
 
-const PokemonCard = ({ name, url }) => {
+    const PokemonCard = ({ name, url }) => {
     const [pokemon, setPokemon] = useState(null);
+    const navigate = useNavigate();
 
     useEffect(() => {
         const fetchPokemonDetails = async () => {
@@ -45,8 +47,12 @@ const PokemonCard = ({ name, url }) => {
     const pokemonType = pokemon.types?.[0]?.type?.name || "default";
     const backgroundColor = typeColors[pokemonType] || typeColors.default;
 
+    function handleClick() {
+        navigate("/pokemon/" + pokemon.id);
+    }
+
     return (
-        <div className="w-100 h-100 container rounded pokemon-card" style={{ backgroundColor }}>
+        <div className="w-100 h-100 container rounded pokemon-card" style={{ backgroundColor }} onClick={handleClick}>
             <div className="row">
                 <div className="col-6">
                     <p>#{pokemon.id}</p>

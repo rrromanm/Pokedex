@@ -1,17 +1,19 @@
 import './App.css'
 import React from 'react'
-import { HashRouter, Routes, Route } from 'react-router-dom'
+import { Routes, Route, BrowserRouter } from 'react-router-dom'
 import HomePage from './pages/HomePage'
+import PokemonDetails from './pages/PokemonDetails'
 
 function App() {
 
   return (
     <>
-      <HashRouter>
+      <BrowserRouter>
         <Routes>
           <Route path="/" element={<HomePage/>} />
+          <Route path="pokemon/:id" element={<PokemonDetails/>}/>
         </Routes>
-      </HashRouter>
+      </BrowserRouter> 
     </>
   )
 }
