@@ -28,9 +28,20 @@ const PokemonDetails = () => {
     return (
         <>
             <h1>Pokemon Details</h1>
-            <h1>{pokemon.name}</h1>
-            <img src={pokemon.sprites.front_default} alt={pokemon.name} />
-            <h1>Height: {pokemon.height}</h1>   
+            <div className="container">
+                <div className="row">
+                    <div className="col-md-6">
+                        <img src={pokemon.sprites.front_default} alt={pokemon.name} />
+                    </div>
+                    <div className="col-md-6">
+                        <h2>{pokemon.name}</h2>
+                        <p>Height: {pokemon.height}</p>  
+                        <p>Weight: {pokemon.weight}</p>
+                        <p>Types: {pokemon.types.map(type => type.type.name).join(", ")}</p>
+                        <p>Abilities: {pokemon.abilities.map(ability => ability.ability.name).join(", ")}</p>
+                    </div>
+                </div>
+            </div>
         </>
     );
 };
