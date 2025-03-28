@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import PokemonTable from "../components/PokemonTable";
 import Header from "../components/header";
+import Sidebar from "../components/Sidebar";
 
 const HomePage = () => {
   const [pokemons, setPokemons] = useState([]);
@@ -44,6 +45,7 @@ const HomePage = () => {
         onClick={() => setCurrentPage((prev) => (indexOfLastItem < pokemons.length ? prev + 1 : prev))}
         disabled={indexOfLastItem >= pokemons.length}>Next</button>
       </div>
+      <Sidebar/>
     </div>
   );
 };
