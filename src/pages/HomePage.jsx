@@ -1,10 +1,11 @@
 import { useEffect, useState } from "react";
 import PokemonTable from "../components/PokemonTable";
+import Header from "../components/header";
 
 const HomePage = () => {
   const [pokemons, setPokemons] = useState([]);
   const [currentPage, setCurrentPage] = useState(1);
-  const itemsPerPage = 12;
+  const itemsPerPage = 16;
 
   useEffect(() => {
     const fetchPokemons = async () => {
@@ -26,10 +27,9 @@ const HomePage = () => {
 
   return (
     <div className="flex flex-col items-center">
-      <h1 className="text-3xl font-bold my-4">Pokédex</h1>
+      <Header />
       <PokemonTable pokemons={currentPokemons} />
-
-      <div className="mt-3 d-flex justify-content-between">
+      <div className="container mt-3 d-flex justify-content-between">
         <button 
         className="rounded" 
         onClick={() => setCurrentPage((prev) => Math.max(prev - 1, 1))}
