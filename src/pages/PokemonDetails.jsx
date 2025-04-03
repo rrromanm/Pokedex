@@ -1,5 +1,7 @@
 import react, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
+import Header from "../components/header";
+import Sidebar from "../components/Sidebar";
 
 const PokemonDetails = () => {
     const { id } = useParams();
@@ -27,11 +29,12 @@ const PokemonDetails = () => {
     
     return (
         <>
-            <h1>Pokemon Details</h1>
-            <div className="container">
-                <div className="row">
+            <Header />
+            
+            <div className="container mt-5 d=flex justify-content-center">
+                <div className="row pokemon-details">
                     <div className="col-md-6">
-                        <img src={pokemon.sprites.front_default} alt={pokemon.name} />
+                        <img src={pokemon.sprites.other.dream_world.front_default} alt={pokemon.name} />
                     </div>
                     <div className="col-md-6">
                         <h2>{pokemon.name}</h2>
@@ -42,6 +45,7 @@ const PokemonDetails = () => {
                     </div>
                 </div>
             </div>
+            <Sidebar />
         </>
     );
 };

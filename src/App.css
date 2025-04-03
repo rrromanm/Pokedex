@@ -17,6 +17,10 @@ body {
   cursor: pointer;
 }
 
+.pokemon-details{
+  background-color: white;
+}
+
 .pokeball {
   width: 4vh;
   height: auto;

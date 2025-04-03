@@ -12,7 +12,7 @@ const Sidebar = () => {
             </button>
             <nav className={`sidebar-nav ${isOpen ? 'open' : ''}`}>
                 <ul className='pt-5'>
-                    <li><FontAwesomeIcon icon={faHome} className='mx-2'/><a href="#home">Pokedex</a></li>
+                    <li><FontAwesomeIcon icon={faHome} className='mx-2'/><a href="/">Pokedex</a></li>
                     <li><FontAwesomeIcon icon={faMagnifyingGlass} className='mx-2'/><a href="search">Search</a></li>
                 </ul>
             </nav>
