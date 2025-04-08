@@ -7,7 +7,7 @@ import PokemonDetails from "./pages/PokemonDetails";
 function App() {
   return (
     <>
-      <BrowserRouter>
+      <BrowserRouter basename="/Pokedex">
         <Routes>
           <Route path="/" element={<HomePage />} />
           <Route path="pokemon/:id" element={<PokemonDetails />} />
