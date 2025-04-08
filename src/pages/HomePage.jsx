@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import PokemonTable from "../components/PokemonTable";
 import Header from "../components/header";
-import Sidebar from "../components/Sidebar";
+import Footer from "../components/SocialsFooter";
 
 const HomePage = () => {
   const [pokemons, setPokemons] = useState([]);
@@ -11,7 +11,9 @@ const HomePage = () => {
   useEffect(() => {
     const fetchPokemons = async () => {
       try {
-        const response = await fetch("https://pokeapi.co/api/v2/pokemon?limit=1026");
+        const response = await fetch(
+          "https://pokeapi.co/api/v2/pokemon?limit=1026"
+        );
         const data = await response.json();
         setPokemons(data.results);
       } catch (error) {
@@ -31,21 +33,31 @@ const HomePage = () => {
       <Header />
       <PokemonTable pokemons={currentPokemons} />
       <div className="container mt-3 d-flex justify-content-between">
-        <button 
-        className="rounded" 
-        onClick={() => setCurrentPage((prev) => Math.max(prev - 1, 1))}
-        disabled={currentPage === 1}>Back</button>
+        <button
+          className="rounded"
+          onClick={() => setCurrentPage((prev) => Math.max(prev - 1, 1))}
+          disabled={currentPage === 1}
+        >
+          Back
+        </button>
 
         <>
           <span>Page {currentPage}</span>
         </>
 
-        <button 
-        className="rounded"
-        onClick={() => setCurrentPage((prev) => (indexOfLastItem < pokemons.length ? prev + 1 : prev))}
-        disabled={indexOfLastItem >= pokemons.length}>Next</button>
+        <button
+          className="rounded"
+          onClick={() =>
+            setCurrentPage((prev) =>
+              indexOfLastItem < pokemons.length ? prev + 1 : prev
+            )
+          }
+          disabled={indexOfLastItem >= pokemons.length}
+        >
+          Next
+        </button>
       </div>
-      <Sidebar/>
+      <Footer />
     </div>
   );
 };
